@@ -66,6 +66,8 @@ if(MSVC)
     include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 
+message(INFO "\n\n1")
+
 if(NOT CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_CURRENT_BINARY_DIR)
     # If we're doing an out of source build and the user has a zconf.h
     # in their source tree...
@@ -190,9 +192,9 @@ target_include_directories(zlib PUBLIC
     $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}>
     $<INSTALL_INTERFACE:include/zlib>)
 
-#target_include_directories(zlibstatic PUBLIC 
-#    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
-#    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}>)
+target_include_directories(zlibstatic PUBLIC 
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}>)
 
 set_target_properties(zlib PROPERTIES DEFINE_SYMBOL ZLIB_DLL)
 set_target_properties(zlib PROPERTIES SOVERSION 1)
